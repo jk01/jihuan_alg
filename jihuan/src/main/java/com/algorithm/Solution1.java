@@ -15,9 +15,13 @@ package com.algorithm;
  * @version: 1.0
  */
 public class Solution1 {
-
+    static ListNode head;
+    static ListNode tail;
 public static void reverseLinkList(ListNode parent,ListNode current){
-    if(current!=null&&current.next!=null){
+    if(current.next==null){
+        current.next=parent;
+        tail=current;
+    }else if(current!=null){
         reverseLinkList(current,current.next);
         current.next=parent;
     }
@@ -33,18 +37,21 @@ public static void reverseLinkList(ListNode parent,ListNode current){
         node2.next=node3;
         node3.next=node4;
         node4.next=node5;
-//        while(node1!=null){
-//            System.out.print(node1.key + "->");
-//            node1=node1.next;
-//        }
-//        System.out.println("null");
+        head=node1;
+        while(head!=null){
+            System.out.print(head.key + "->");
+            head=head.next;
+        }
+        System.out.println("null");
         System.out.println("----------------");
         System.out.println("----------------");
         reverseLinkList(node1,node1.next);
-        while(node1!=null){
-            System.out.println(node1.key);
-            node1=node1.next;
+        node1.next=null;
+        while(tail!=null){
+            System.out.print(tail.key + "->");
+            tail=tail.next;
         }
+        System.out.println("null");
     }
 }
 
