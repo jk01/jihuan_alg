@@ -30,6 +30,46 @@ public class Solution1 {
         }
     }
 
+    /**
+     * @param ListNode head is the head of the linked list
+     * @oaram m and n
+     * @return: The head of the reversed ListNode
+     */
+    public ListNode reverseBetween(ListNode head, int m , int n) {
+        // write your code
+        if( m>=n || head == null){
+            return head;
+        }
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        head = dummy;
+        // 找到旋转链表的第一个节点
+        for(int i=1;i<m;i++){
+            if( head ==null)
+                return null;
+            head = head.next;
+        }
+        // 第m个节点的前一个节点
+        ListNode premNode = head;
+        // 第m个节点
+        ListNode mNode = head.next;
+        ListNode nNode = mNode;
+        ListNode postnNode = mNode.next;
+        for(int i=m;i< n;i++){
+            if(postnNode == null){
+                return null;
+            }
+            // 旋转
+            ListNode tmp = postnNode.next;
+            postnNode.next = nNode;
+            nNode = postnNode;
+            postnNode = tmp;
+        }
+        mNode.next = postnNode;
+        premNode.next = nNode;
+        return dummy.next;
+    }
+
     public static void main(String[] args) {
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(2);
