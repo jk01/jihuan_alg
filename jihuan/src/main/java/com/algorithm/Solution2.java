@@ -85,7 +85,7 @@ public class Solution2 {
     }
 
     public static void main(String[] args) {
-        String source = "ADOBECODEBANC",target = "ABC";
+        String source = "FFFFFFFDDDDADBCDDFDOABNCODEBANC",target = "ABC";
         String result=minWindow(source,target);
         System.out.println(result);
     }
