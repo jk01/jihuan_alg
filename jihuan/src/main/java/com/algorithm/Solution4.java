@@ -28,7 +28,7 @@ public class Solution4 {
      * @param s1, s2, s3: As description.
      * @return: true or false.
      */
-    public boolean isInterleave(String s1, String s2, String s3) {
+    public static boolean isInterleave(String s1, String s2, String s3) {
         // write your code here
         if(s1.length() + s2.length() != s3.length())
             return false;
@@ -60,5 +60,58 @@ public class Solution4 {
             }
         }
         return matched[s1.length()][s2.length()];
+    }
+
+    /**
+     *
+     遍历s3的每个字符，这个字符必须是s1或s2中的字符;
+     用i、j、k表示 s1、s2、s3字符下标；
+     如果s3中的字符为s1中的字符，则i++，如果为s2中的字符则j++；
+     这个字符如果s1和s2中都有，需要考虑两种情况，（i++,j不变）||（i不变,j++）；
+     *
+     */
+    public static boolean isInterleave2(String str1,String str2,String str3){
+        char[] s1 = str1.toCharArray();
+        char[] s2 = str2.toCharArray();
+        char[] s3 = str3.toCharArray();
+        int len_1 = str1.length();
+        int len_2 = str2.length();
+        int len_3 = str3.length();
+        if(len_1 + len_2 != len_3){
+            return false;
+        }
+        int i= 0 ,j = 0;
+        for (int k=0 ; k<len_3 ; k++){
+            if(i>len_1)
+                return false;
+            if(j>len_2)
+                return false;
+            char temp = s3[k];
+            //如果是s1中的字符，则m1为true
+            boolean m1 = i<len_1 && temp == s1[i];
+            //如果是s2中的字符,则m2为true
+            boolean m2 = j<len_2 && temp == s2[j];
+            if( !m1 && !m2 ){
+                return false;
+            }else if( m1 && m2 ){//即为s1中的字符也为s2中的字符,这里需要考虑两种情况
+                String newS3 = str3.substring(k+1);
+                return isInterleave2(str1.substring(i + 1), str2.substring(j), newS3)
+                        || isInterleave2(str1.substring(i), str2.substring(j + 1), newS3);
+            }else if(m1){
+                i++;
+            }else{
+                j++;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+       String s1 = "1234" ;
+       String s2 = "1abcd";
+       String s3 = "112abc34d";
+//       Boolean b= isInterleave(s1,s2,s3);
+       Boolean b2= isInterleave2(s1,s2,s3);
+       System.out.println("result1=,result2="+b2);
     }
 }
