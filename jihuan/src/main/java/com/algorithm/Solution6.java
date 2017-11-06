@@ -40,7 +40,7 @@ public class Solution6 {
      * @param nums: A set of numbers.
      * @return: A list of lists. All valid subsets.
      */
-    public ArrayList<ArrayList<Integer>> subsets(int[] nums) {
+    public static ArrayList<ArrayList<Integer>> subsets(int[] nums) {
         // write your code here
         ArrayList<Integer> list = new ArrayList<Integer>();
         ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
@@ -51,7 +51,7 @@ public class Solution6 {
 
         return res;
     }
-    public void helper(int[] nums,int start, ArrayList<Integer> list,ArrayList<ArrayList<Integer>> res){
+    public static  void helper(int[] nums,int start, ArrayList<Integer> list,ArrayList<ArrayList<Integer>> res){
         res.add(new ArrayList<Integer>(list));
         for(int i=start;i< nums.length;i++){
             if(list.contains(nums[i])){
@@ -62,5 +62,13 @@ public class Solution6 {
             list.remove(list.size()-1);
         }
 
+    }
+
+    public static void main(String[] args) {
+        int[] nums={1,2,3};
+        ArrayList<ArrayList<Integer>> result=subsets(nums);
+        for(ArrayList<Integer> list:result){
+            System.out.println(list.toString());
+        }
     }
 }
