@@ -85,8 +85,10 @@ public class Solution2 {
     }
 
     public static void main(String[] args) {
-        String source = "FFFFFFFDDDDADBCDDFDOABNCODEBANC",target = "ABC";
+        String source = "ADBCDDFDOABNCODEBANC",target = "ABC";
         String result=minWindow(source,target);
         System.out.println(result);
+        String a=source.substring(1,2);
+        System.out.println(a);
     }
 }
