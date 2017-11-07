@@ -13,7 +13,7 @@ package com.algorithm;
  挑战
  要求时间复杂度为O(n），空间复杂度为O(1）
  解题
- 理论快速排序的思想，每次都减半，这个时间复杂度也是O(N)，至于为什么就不知道了
+ 理论快速排序的思想，这个时间复杂度也是O(N)，在N的线上两头相向运动，最好的情况为1，最差的情况为N
  * @author jihuan
  * @create 2017-10-15 22:07
  * @version: 1.0
@@ -24,12 +24,12 @@ public class Solution10 {
     * @param nums : array of nums
     * @return: description of return
     */
-    public int kthLargestElement(int k, int[] nums) {
+    public static int kthLargestElement(int k, int[] nums) {
         // write your code here
         return quickSort(nums,0,nums.length-1,k);
 
     }
-    public int quickSort(int[] nums,int left,int right,int k){
+    public static int quickSort(int[] nums,int left,int right,int k){
         int i = left;
         int j = right;
         int tmp = nums[i];
@@ -53,5 +53,12 @@ public class Solution10 {
         }else{
             return quickSort(nums,left,i-1,k);
         }
+    }
+
+    public static void main(String[] args) {
+        int[] nums={5,1,3,2,4};
+        int d=3;
+        System.out.println("第"+d+" 大 ="+kthLargestElement(d,nums));
+
     }
 }
