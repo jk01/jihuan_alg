@@ -34,7 +34,7 @@ public class Solution8 {
      * @param nums: A list of integers.
      * @return: A list of permutations.
      */
-    public ArrayList<ArrayList<Integer>> permute(ArrayList<Integer> nums) {
+    public static ArrayList<ArrayList<Integer>> permute(ArrayList<Integer> nums) {
         // write your code here
         ArrayList<Integer> list = new ArrayList<Integer>();
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
@@ -43,7 +43,7 @@ public class Solution8 {
         helper(nums,list,result);
         return result;
     }
-    public void helper(ArrayList<Integer> nums,ArrayList<Integer> list,ArrayList<ArrayList<Integer>> res){
+    public static void helper(ArrayList<Integer> nums,ArrayList<Integer> list,ArrayList<ArrayList<Integer>> res){
         if(list.size() == nums.size()){
             res.add(new ArrayList<Integer>(list));
             return ;
@@ -55,6 +55,18 @@ public class Solution8 {
             list.add(nums.get(i));
             helper(nums,list,res);
             list.remove(list.size() - 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] nums={1,2,3};
+        ArrayList<Integer> list=new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            list.add(nums[i]);
+        }
+        ArrayList<ArrayList<Integer>> result=permute(list);
+        for(ArrayList<Integer> list1:result){
+            System.out.println(list1.toString());
         }
     }
 }
