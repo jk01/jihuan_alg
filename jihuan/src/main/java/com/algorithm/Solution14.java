@@ -41,7 +41,7 @@ public class Solution14 {
      * @param path the original path
      * @return the simplified path
      */
-    public String simplifyPath(String path) {
+    public static String simplifyPath(String path) {
         // Write your code here
         if(path==null)
             return null;
@@ -64,7 +64,10 @@ public class Solution14 {
             sb.insert(0, "/");
         }
         return sb.length() == 0 ? "/" : sb.toString();
+    }
 
-
+    public static void main(String[] args) {
+        String path="/a/b/../..";
+        System.out.println(simplifyPath(path));
     }
 }
