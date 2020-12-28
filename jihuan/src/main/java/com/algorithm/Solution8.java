@@ -60,7 +60,7 @@ public class Solution8 {
 
     public static void main(String[] args) {
         int[] nums={1,2,3};
-        ArrayList<Integer> list=new ArrayList<>();
+        ArrayList<Integer> list=new ArrayList<Integer>();
         for(int i=0;i<nums.length;i++){
             list.add(nums[i]);
         }

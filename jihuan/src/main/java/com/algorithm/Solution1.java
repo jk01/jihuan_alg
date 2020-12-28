@@ -29,6 +29,24 @@ public class Solution1 {
             current.next = parent;
         }
     }
+    /**
+     * 求链表的三等分点
+     */
+    public static void threePoint(ListNode current){
+        //先判断长度是否为3的倍数
+
+        //第三个点的走到最后一个节点，停止
+        ListNode first = current.next;
+        ListNode two = current.next.next;
+        ListNode three = current.next.next.next;
+        ListNode dNode = three;
+        while(dNode.next != null){
+             first = dNode.next;
+             two = dNode.next.next;
+             three = dNode.next.next.next;
+             dNode = three;
+        }
+    }
 
     /**
      * @param ListNode head is the head of the linked list
@@ -76,10 +94,18 @@ public class Solution1 {
         ListNode node3 = new ListNode(3);
         ListNode node4 = new ListNode(4);
         ListNode node5 = new ListNode(5);
+        ListNode node6 = new ListNode(6);
+        ListNode node7 = new ListNode(7);
+        ListNode node8 = new ListNode(8);
+        ListNode node9 = new ListNode(9);
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
         node4.next = node5;
+        node5.next = node6;
+        node6.next = node7;
+        node7.next = node8;
+        node8.next = node9;
         head = node1;
         while (head != null) {
             System.out.print(head.key + "->");
