@@ -1,4 +1,4 @@
-package other.link;
+package com.algorithm.string;
 
 public class StringFind {
 
