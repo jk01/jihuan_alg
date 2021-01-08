@@ -1,4 +1,4 @@
-package other.link;
+package com.algorithm.tree;
 
 import javax.swing.tree.TreeNode;
 import java.util.ArrayList;

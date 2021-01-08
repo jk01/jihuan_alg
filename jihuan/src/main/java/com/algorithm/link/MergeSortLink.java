@@ -20,7 +20,8 @@ public class MergeSortLink {
             return lists.get(start);
         }
 
-        int mid = start + (end - start) / 2;
+//        int mid = start + (end - start) / 2;
+        int mid = (start + end) / 2;
         ListNode left = mergeHelper(lists, start, mid);
         ListNode right = mergeHelper(lists, mid + 1, end);
         return mergeTwoLists(left, right);
@@ -52,10 +53,10 @@ public class MergeSortLink {
     public static void main(String[] args) {
         MergeSortLink sortLink = new MergeSortLink();
         List<ListNode> listNodeList = new ArrayList<ListNode>();
-        ListNode a1 = new ListNode(4);
-        ListNode a2 = new ListNode(3);
-        ListNode a3 = new ListNode(6);
-        ListNode a4 = new ListNode(2);
+        ListNode a1 = new ListNode(3);
+        ListNode a2 = new ListNode(4);
+        ListNode a3 = new ListNode(5);
+        ListNode a4 = new ListNode(6);
         a1.next =a2;
         a2.next =a3;
         a3.next =a4;
