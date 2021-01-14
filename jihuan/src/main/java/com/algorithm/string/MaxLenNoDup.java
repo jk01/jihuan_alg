@@ -25,7 +25,7 @@ public class MaxLenNoDup {
     }
 
     public static void main(String[] args) {
-        String str = "abac";
+        String str = "abcdaqwer";
         int a=lengthOfLongestSubstring(str);
         System.out.println(a);
     }
