@@ -1,5 +1,7 @@
 package other.link;
 
+import java.util.concurrent.CountDownLatch;
+
 public class TestThread {
     public  static void main(String  []args  ){
         MaculteJac   maj=new MaculteJac();
@@ -14,22 +16,27 @@ public class TestThread {
 }
 
 class MaculteJac{
-    static int i=3;
-    StringBuffer buffer = new StringBuffer();
-  public void printChar(Character c){
+  private static CountDownLatch count = new CountDownLatch(3);
+  private StringBuffer buffer = new StringBuffer();
+  public void addChar(Character c){
       buffer.append(c);
-      if(i-- == 1){
-          for(int i=0;i<10;i++){
+      count.countDown();
+  }
+
+  public void takeChar(){
+      try {
+          count.await();
+          for (int i = 0; i < 10; i++) {
               System.out.println(buffer.toString());
           }
+      }catch (Exception e){
+          e.printStackTrace();
       }
   }
 }
 class ThreadABC implements Runnable{
     private MaculteJac maculteJac;
     private Character c;
-
-
     public ThreadABC(MaculteJac maculteJac,Character c){
         this.maculteJac = maculteJac;
         this.c = c;
@@ -37,6 +44,7 @@ class ThreadABC implements Runnable{
 
     @Override
     public void run() {
-        maculteJac.printChar(c);
+        maculteJac.addChar(c);
+        maculteJac.takeChar();
     }
 }
