@@ -46,8 +46,10 @@ public class StringFind {
     }
 
     public static void main(String[] args) {
-        String source="1ab1111abc33";
+        String source="zab1111abc33";
         String target ="abc";
-        System.out.println(strStr2(source,target));
+        System.out.println(strStr(source,target));
+        int d = source.indexOf(target);
+        System.out.println(d);
     }
 }
